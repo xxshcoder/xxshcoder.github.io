@@ -5,14 +5,15 @@
 </head>
 <body>
   <h1>Real-Time GPS Coordinates</h1>
-  <h1>Real-Time GPS Coordinates</h1>
   <p>Latitude: <span id="latitude">-</span></p>
   <p>Longitude: <span id="longitude">-</span></p>
 
   <script>
     function getLocation() {
       if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(showPosition);
+        setInterval(() => {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        }, 1000); // Refresh every 1000 milliseconds (1 second)
       } else {
         console.log("Geolocation is not supported by this browser.");
       }
