@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Real-Time GPS Coordinates</title>
-  <meta http-equiv="refresh" content="10"> <!-- Auto-refresh every 10 seconds -->
 </head>
 <body>
   <h1>Real-Time GPS Coordinates</h1>
@@ -12,7 +11,9 @@
   <script>
     function getLocation() {
       if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(showPosition);
+        setInterval(() => {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        }, 10000); // Refresh every 10000 milliseconds (10 second)
       } else {
         console.log("Geolocation is not supported by this browser.");
       }
